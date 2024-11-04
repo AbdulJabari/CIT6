@@ -35,6 +35,12 @@ const index = () => {
           >
             Q&A
           </Link>
+          <Link
+            to={'/dashboard'}
+            className="px-2 h-full md:block hidden hover:border-b-[3px] border-red-900 "
+          >
+            Dashboard
+          </Link>
         </div>
 
         <Link

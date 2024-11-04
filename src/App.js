@@ -8,6 +8,7 @@ import { beginnerModules } from './modules'
 import Topic2 from './pages/Topics/Beginner/Topic2'
 import { beginnerDemos } from './demoVideos'
 import DemoVideo1 from './pages/DemoVideos/DemoVideo1'
+import Dashboard from './pages/Dashboard/Dashboard'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/demos" element={<Demos />} />
         <Route
           path={`/demos/${beginnerDemos[0].id}`}
