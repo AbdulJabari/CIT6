@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import '../../../App.css'
 import ModalQuiz from '../../../components/ModalQuiz/ModalQuiz'
 import { beginnerModules } from '../../../modules'
 

@@ -1,6 +1,7 @@
 import { beginnerModules } from '../../modules'
 import { useNavigate } from 'react-router-dom'
 import { FaArrowRight } from 'react-icons/fa'
+import './modules.css'
 
 export default function Modules() {
   const navigate = useNavigate()
