@@ -24,6 +24,7 @@ const ModalQuiz = ({ onClose, time, questions }) => {
         })
         setNumCorrect((prevCount) => {
           const newCount = prevCount + 1
+          console.log(newCount)
           return newCount
         })
         handleNextQuestion()
@@ -126,10 +127,10 @@ const ModalQuiz = ({ onClose, time, questions }) => {
             </h2>
             <RadialBar
               numCorrect={numCorrect}
-              questionLength={questions.length}
+              questionLength={questions.length - 1}
             />
             <h3 className="font-bold text-2xl -mt-4">
-              {numCorrect} / {questions.length}
+              {numCorrect} / {questions.length - 1}
             </h3>
             <div className="inline-block text-left">
               <h4>

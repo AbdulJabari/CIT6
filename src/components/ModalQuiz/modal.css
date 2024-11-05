@@ -36,9 +36,9 @@
 }
 
 .toast-invalid {
-  background-color: red !important;
+  background-color: #cc0000 !important;
   border-radius: 5px !important;
-  color: black !important;
+  color: white !important;
   position: fixed;
   margin-top: 225px;
   margin-left: 1100px;
