@@ -10,6 +10,9 @@ import { beginnerDemos } from './demoVideos'
 import DemoVideo1 from './pages/DemoVideos/DemoVideo1'
 import Dashboard from './pages/Dashboard/Dashboard'
 import TimeAndScore from './pages/DashboardPages/TimeAndScore'
+import AreasOfDiffculty from './pages/DashboardPages/AreasOfDifficulty'
+import LessonsOfExcellence from './pages/DashboardPages/LessonsOfExcellence'
+import ConceptBooster from './pages/DashboardPages/ConceptBooster'
 
 function App() {
   return (
@@ -37,6 +40,15 @@ function App() {
           path="/dashboard/timespentandquizscore"
           element={<TimeAndScore />}
         />
+        <Route
+          path="/dashboard/lessonsofexcellence"
+          element={<LessonsOfExcellence />}
+        />
+        <Route
+          path="/dashboard/areasofdifficulty"
+          element={<AreasOfDiffculty />}
+        />
+        <Route path="/dashboard/conceptbooster" element={<ConceptBooster />} />
       </Routes>
     </div>
   )
