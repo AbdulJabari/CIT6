@@ -1,6 +1,6 @@
 import { beginnerModules } from '../../modules'
 import { useNavigate } from 'react-router-dom'
-import { FaArrowRight } from 'react-icons/fa'
+import { FaArrowRight, FaLightbulb } from 'react-icons/fa'
 import './modules.css'
 
 export default function Modules() {
@@ -33,11 +33,11 @@ export default function Modules() {
               </div>
               <p className="text-sm">{module.desc}</p>
               <button
-                className="text-left bg-green-600 w-32 p-2 rounded-lg text-md text-white flex items-center gap-2 pl-3 hover:animate-bounce active:animate-ping"
+                className="text-left bg-green-600 w-32 p-2 rounded-lg text-xs text-white flex items-center gap-2 pl-3 hover:animate-bounce active:animate-ping font-bold"
                 onClick={() => navigate(`/modules/${module.id}`)}
               >
-                Read Topic
-                <FaArrowRight />
+                Dive Into Topic
+                <FaLightbulb />
               </button>
             </div>
           )

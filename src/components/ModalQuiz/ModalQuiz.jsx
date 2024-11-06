@@ -41,7 +41,7 @@ const ModalQuiz = ({ onClose, time, questions }) => {
   }
 
   function handleNextQuestion() {
-    if (questionIndex + 1 < questions.length) {
+    if (questionIndex < questions.length) {
       setQuestionIndex((prevCount) => {
         const newCount = prevCount + 1
         return newCount
@@ -54,7 +54,7 @@ const ModalQuiz = ({ onClose, time, questions }) => {
   return (
     <div className="fixed z-100 p-[150px] left-0 top-0 w-full h-full modal overflow-hidden">
       <div className="relative bg-white m-auto p-8  border-red-800 rounded-lg border-2 w-[80%] modal-content">
-        {questionIndex + 1 < questions.length ? (
+        {questionIndex < questions.length ? (
           <div>
             <div className="px-1 pt-4 bg-white flex justify-between items-center">
               <h2 className="font-bold text-2xl">
@@ -127,10 +127,10 @@ const ModalQuiz = ({ onClose, time, questions }) => {
             </h2>
             <RadialBar
               numCorrect={numCorrect}
-              questionLength={questions.length - 1}
+              questionLength={questions.length}
             />
             <h3 className="font-bold text-2xl -mt-4">
-              {numCorrect} / {questions.length - 1}
+              {numCorrect} / {questions.length}
             </h3>
             <div className="inline-block text-left">
               <h4>

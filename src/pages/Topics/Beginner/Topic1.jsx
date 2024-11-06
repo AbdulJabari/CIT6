@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import ModalQuiz from '../../../components/ModalQuiz/ModalQuiz'
 import { beginnerModules } from '../../../modules'
+import { FaBrain } from 'react-icons/fa'
+import { GiBrain } from 'react-icons/gi'
 
 const Topic1 = () => {
   const [showModalPopup, setShowModalPopup] = useState(false)
@@ -132,13 +134,17 @@ const Topic1 = () => {
       </ol>
 
       <button
-        className="rounded-lg border-x-red-700 border-2 p-3 px-8 bg-red-700 mt-7 text-white font-bold text-lg block mx-auto mb-10"
+        className="rounded-lg border-x-red-700 border-2 p-3 px-8 bg-red-700 mt-7 text-white font-bold text-lg block mx-auto mb-10 "
         onClick={() => {
           clearInterval(timer.current)
           setIsTimeRunning(false)
           handleToggleModalPopup()
         }}
       >
+        <GiBrain
+          className="inline-block"
+          style={{ height: '30px', width: '25px', marginRight: '3px' }}
+        />
         Take Quiz
       </button>
     </div>
