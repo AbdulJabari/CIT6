@@ -2,10 +2,12 @@ import { v4 as uuidv4 } from 'uuid'
 
 export const beginnerModules = [
   {
-    id: '4275743b-5666-42ba-85c8-c578748ca252',
+    id: '4275743b-5666-42ba-85c8-c578748ca251',
     name: 'Introduction to Blockchain',
     keywords: ['Blockchain', 'How does blockchain work?', 'Bitcoin Mining'],
     desc: "The idea Blockchain may be filled with jargons, but it doesn't have to be complicated to learn...",
+    passingScore: 5,
+    duration: null,
     questions: [
       {
         question:
@@ -41,7 +43,7 @@ export const beginnerModules = [
     ],
   },
   {
-    id: uuidv4(),
+    id: '4275743b-5666-42ba-85c8-c578748ca252',
     name: 'Introduction to Blockchain',
     keywords: ['Blockchain', 'How does blockchain work?', 'Bitcoin Mining'],
     desc: "The idea Blockchain may be filled with jargons, but it doesn't have to be complicated to learn...",

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Chart from 'react-apexcharts'
+import { stats } from '../../stats'
 
 class RadialBarAnalytics extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class RadialBarAnalytics extends Component {
         },
       },
 
-      series: [Math.floor((completed / notCompleted) * 100).toFixed(2)],
+      series: [Math.floor((completed / stats.length) * 100).toFixed(2)],
     }
   }
 

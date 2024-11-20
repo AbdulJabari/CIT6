@@ -139,6 +139,8 @@ const Topic1 = () => {
           clearInterval(timer.current)
           setIsTimeRunning(false)
           handleToggleModalPopup()
+          console.log(typeof time)
+          console.log('time Finalize' + time)
         }}
       >
         <GiBrain
