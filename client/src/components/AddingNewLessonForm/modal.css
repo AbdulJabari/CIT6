@@ -1,0 +1,65 @@
+.modal {
+  background-color: #80808090;
+}
+
+.modal-content {
+  animation-name: animateModal;
+  animation-duration: 0.5s;
+}
+
+.question {
+  border-radius: 0.5rem;
+  width: 20rem;
+  height: 4rem;
+  background-color: #b91c1c;
+  color: white;
+  font-weight: bold;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.toast-valid {
+  background-color: lightgreen !important;
+  border-radius: 5px !important;
+  color: black !important;
+  position: fixed;
+  margin-top: 225px;
+  margin-left: 1100px;
+  z-index: 1000;
+  animation: none;
+  padding-top: 15px;
+  width: 9.5rem;
+  height: 3.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.toast-invalid {
+  background-color: #cc0000 !important;
+  border-radius: 5px !important;
+  color: white !important;
+  position: fixed;
+  margin-top: 225px;
+  margin-left: 1100px;
+  z-index: 1000;
+  animation: none;
+  width: 9.5rem;
+  height: 3.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  padding-top: 15px;
+}
+
+@keyframes animateModal {
+  from {
+    top: -200px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}

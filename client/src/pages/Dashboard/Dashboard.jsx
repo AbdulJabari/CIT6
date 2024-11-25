@@ -6,6 +6,7 @@ import { useContext } from 'react'
 import { GlobalContext } from '../../context/GlobalState'
 import DashboardSidebar from '../../components/DashboardSidebar/DashboardSidebar'
 import { beginnerModules } from '../../modules'
+import { useNavigate } from 'react-router-dom'
 
 export default function Dashboard() {
   //For testing remove stats, completedLessonsCounter, strugglingLessons and excellingLessons in useContext and uncomment the stats, beginnerModules, completedLessonsCounter, strugglingLessons and excellingLessons testing data
@@ -51,6 +52,8 @@ export default function Dashboard() {
     stats,
     completedLessonsCounter,
   } = useContext(GlobalContext)
+
+  const navigate = useNavigate()
 
   console.log('These is the stats we are getting from the context: ', stats)
   if (!stats) return <h1>Allahu Akbar</h1>
@@ -109,7 +112,10 @@ export default function Dashboard() {
               : null}
             {completedLessonsCounter > 3 ? (
               <div className="mt-2 mr-7 text-blue-600">
-                <h4 className="text-right text-xl">
+                <h4
+                  className="text-right text-xl"
+                  onClick={() => navigate('/dashboard/timespentandquizscore')}
+                >
                   <FaAnglesRight className="text-right inline-block" /> See more
                 </h4>
               </div>
@@ -135,7 +141,10 @@ export default function Dashboard() {
 
             {strugglingLessons?.length >= 4 ? (
               <div className="mt-2 mr-7 text-blue-600">
-                <h4 className="text-right text-xl">
+                <h4
+                  className="text-right text-xl"
+                  onClick={() => navigate('/dashboard/lessonsofexcellence')}
+                >
                   <FaAnglesRight className="text-right inline-block" /> See more
                 </h4>
               </div>
@@ -163,7 +172,10 @@ export default function Dashboard() {
 
             {excellingLessons?.length >= 4 ? (
               <div className="mt-2 mr-7 text-blue-600">
-                <h4 className="text-right text-xl">
+                <h4
+                  className="text-right text-xl"
+                  onClick={() => navigate('/dashboard/areasofdifficulty')}
+                >
                   <FaAnglesRight className="text-right inline-block" /> See more
                 </h4>
               </div>

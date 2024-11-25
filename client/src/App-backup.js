@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-
 import Navbar from './components/Navbar'
 import Demos from './pages/Demos'
 import Home from './pages/Home'
@@ -25,8 +24,6 @@ function App() {
     <div>
       <Navbar />
       <Routes>
-
-
         <Route exact path="/" element={<Home />} />
 
         <Route path="/demos" element={<Demos />} />

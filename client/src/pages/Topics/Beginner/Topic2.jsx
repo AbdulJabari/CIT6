@@ -54,94 +54,98 @@ const Topic2 = () => {
         <ModalQuiz
           onClose={onClose}
           time={time}
-          timeFormatted={timeFormat(time)}
-          timeFormat={timeFormat}
           questions={beginnerModules[1].questions}
+          moduleId={beginnerModules[1].id}
         />
       )}
-      <h1 className="mt-12 flex flex-col font-extrabold text-5xl    ">
-        <span className="font-bold text-red-900 text-lg">Introducing</span>{' '}
-        Different Types of Blockchain
+      <h1 className="mt-12 flex flex-col font-extrabold text-5xl">
+        <span className="font-bold text-red-900 text-lg">Introducing</span> The
+        Core Ideas Behind Blockchain Technology
       </h1>
-      <p className="text-grayish ">
-        Blockchain technology has gained much popularity over the past years,
-        mostly due to the popularity of cryptocurrencies such as Bitcoin and
-        Ethereum.As of early 2023, this same rise in popularity has also led to
-        the increased adoption of blockchain technology by private enterprises
-        such as Adobe, J.P. Morgan, Mastercard, Shell, and McDonald's. On top of
-        that, other countries' governments have also started exploring
-        blockchain technology, such as Australia, South Korea, and Japan. You
-        might wonder, do they all use the same type of blockchain? The quick
-        answer is no! Different types of blockchains answer different needs, and
-        we'll explore those in this module.
+      <p className="text-grayish">
+        The core ideas behind blockchain technology emerged in the late 1980s
+        and early 1990s. In 1989, Leslie Lamport developed the Paxos protocol,
+        which described a consensus model for reaching agreement on results in a
+        network of computers, even when unreliable. Later, in 1991, a signed
+        chain of information was used as an electronic ledger for digitally
+        signing documents in a way that ensured the integrity of the signed
+        collection.
       </p>
       <img
         className="mx-auto my-8"
-        src={`${process.env.PUBLIC_URL}/images/blockchain-types.png`}
-        alt="blocks chained together"
+        src="/images/blockchain-origin.jpg"
+        alt="Early blockchain concepts"
       />
 
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, eum
-        totam veniam, quibusdam praesentium a officia odit magnam enim
-        accusamus, laborum asperiores quasi voluptate culpa quis facere! Iure,
-        voluptatem dolorum incidunt, ducimus nihil debitis possimus, tempore
-        temporibus nemo quibusdam sit! Tempore dolor perspiciatis libero, quia
-        labore, nobis, distinctio animi iste ea ut temporibus adipisci rem
-        asperiores facilis. Consequuntur consequatur corrupti illum nisi,
-        quibusdam incidunt quidem dolores obcaecati optio at, ad ipsum odio
-        suscipit iste cupiditate fuga veniam explicabo, perferendis quo natus?
-        Porro, numquam quae. Alias facilis aperiam dicta aspernatur ad tenetur
-        voluptas porro earum nisi non perferendis mollitia, quas nam odit? Earum
-        et dolor eum at rem, quas ex eos maiores provident quos? Reiciendis
-        aspernatur corporis nam saepe dolore optio maiores officia. Soluta optio
-        asperiores provident commodi odit. Odio vero magni doloremque beatae.
-        Nisi sit quia debitis error iure? Eos velit nostrum voluptatum eligendi
-        quod in autem dolorum ab nemo excepturi voluptatem officiis eius,
-        impedit voluptas magni quia iusto similique, mollitia id, iure rem
-        cumque harum. Harum amet quis ea nobis provident, alias officia omnis
-        fugiat atque cum voluptate numquam voluptatum laborum incidunt adipisci
-        itaque laboriosam. Ea aliquam at perferendis similique ad cumque
-        molestiae adipisci sit. Iusto eligendi odio modi!
-      </p>
-      <img
-        className="mx-auto my-8"
-        src={`${process.env.PUBLIC_URL}/images/blockchain-types.png`}
-        alt="different types of blockchain"
-      />
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod amet
-        magni harum? Explicabo hic consequuntur sed provident voluptate veniam
-        necessitatibus sequi, porro harum magni dolorum, neque nam placeat.
-        Veniam ea asperiores laudantium id provident praesentium cumque
-        suscipit, delectus assumenda, nihil eligendi magni modi fugiat aliquid
-        excepturi voluptate, quos aliquam perferendis? Provident aliquam eum
-        suscipit quam vitae corporis repudiandae. Expedita optio magnam natus ea
-        ad eveniet facilis dolores voluptas quae fugit, repellat provident
-        aspernatur pariatur officiis sunt accusantium possimus magni minima
-        nesciunt, numquam inventore aperiam! Hic necessitatibus, nesciunt ipsum
-        magnam magni aliquid tempore nostrum cum perferendis nulla
-        exercitationem officiis, alias sequi.
+        These early ideas culminated in 2008 when Satoshi Nakamoto published the
+        seminal paper *Bitcoin: A Peer-to-Peer Electronic Cash System*. This
+        described how blockchain technology could enable direct transactions
+        without the need for trusted third parties, marking the start of Bitcoin
+        in 2009. The blockchain design ensured no single point of failure and
+        supported decentralized administration through mining.
       </p>
 
       <h2 className="mt-12 flex flex-col font-extrabold text-3xl mb-5">
-        Benefits of Blockchain
+        Key Features of Blockchain
       </h2>
-      <ol>
-        <li>
-          <strong>1. Good</strong> Lorem ipsum dolor, sit amet consectetur
-          adipisicing elit. Iste mollitia, non error laudantium possimus
-          repellat.
-        </li>
-        <li>
-          <strong>2. Good</strong> Lorem ipsum dolor sit amet consectetur,
-          adipisicing elit. Culpa, provident dicta nostrum cum dolor amet?
-        </li>
-        <li>
-          <strong>3. Good</strong> Lorem, ipsum dolor sit amet consectetur
-          adipisicing elit. Fugit facilis soluta error.
-        </li>
-      </ol>
+      <p>
+        Blockchain networks rely on four key characteristics to establish trust:
+        <ul className="list-disc ml-5 mt-3">
+          <li>
+            <strong>Ledger:</strong> An append-only ledger provides a complete
+            and unalterable transaction history.
+          </li>
+          <li>
+            <strong>Secure:</strong> Cryptographic techniques ensure the
+            ledger's integrity and prevent tampering.
+          </li>
+          <li>
+            <strong>Shared:</strong> Transparency is maintained by sharing the
+            ledger among participants.
+          </li>
+          <li>
+            <strong>Distributed:</strong> Decentralization makes the network
+            resilient against attacks.
+          </li>
+        </ul>
+      </p>
+
+      <h2 className="mt-12 flex flex-col font-extrabold text-3xl mb-5">
+        Applications and Benefits
+      </h2>
+      <p>
+        Blockchain technology underpins numerous applications beyond
+        cryptocurrencies. For instance:
+      </p>
+      <h3 className="mt-6 font-bold text-2xl">Permissionless Networks</h3>
+      <p>
+        In permissionless networks, users can participate without prior
+        knowledge or authorization, enabling faster transactions and lower
+        costs. This decentralization fosters trust among anonymous participants.
+      </p>
+
+      <h3 className="mt-6 font-bold text-2xl">Permissioned Networks</h3>
+      <p>
+        In permissioned networks, user access is controlled, enhancing trust
+        while benefiting from blockchain’s transparency and security.
+      </p>
+
+      <img
+        className="mx-auto my-8"
+        src="/images/blockchain-applications.png"
+        alt="Blockchain applications"
+      />
+
+      <h2 className="mt-12 flex flex-col font-extrabold text-3xl mb-5">
+        Smart Contracts
+      </h2>
+      <p>
+        Blockchain has extended beyond financial transactions to include smart
+        contracts. These are pieces of code on the blockchain that execute
+        automatically when predefined conditions are met, facilitating
+        automated, transparent, and secure agreements.
+      </p>
 
       <button
         className="rounded-lg border-x-red-700 border-2 p-3 px-8 bg-red-700 mt-7 text-white font-bold text-lg block mx-auto mb-10"

@@ -18,7 +18,7 @@ const index = () => {
         </Link>
         <div className="h-full pt-4 flex justify-between items-center gap-12 ">
           <Link
-            to={'/modules'}
+            to={'/modulesadmin'}
             className="px-2 h-full md:block hidden hover:border-b-[3px] border-red-900 "
           >
             Modules

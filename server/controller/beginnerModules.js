@@ -1,6 +1,4 @@
-import { v4 as uuidv4 } from 'uuid'
-
-export const beginnerModules = [
+const beginnerModules = [
   {
     id: '1',
     name: 'Introduction to Blockchain',
@@ -218,6 +216,8 @@ export const beginnerModules = [
     name: 'Different Types of Blockchain',
     keywords: ['Public Blockchain', 'Proof of Work?', 'Consortium Blockchain'],
     desc: 'There are four main types of blockchain networks: public blockchains, private blockchains,   ....',
+    passingScore: 5,
+    duration: 60,
     questions: [
       {
         question: 'What is blockchain’s benefit in food?',
@@ -322,3 +322,4 @@ export const beginnerModules = [
     ],
   },
 ]
+module.exports = { beginnerModules }

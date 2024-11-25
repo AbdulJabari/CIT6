@@ -45,10 +45,11 @@ const Topic1 = () => {
           moduleId={beginnerModules[0].id}
         />
       )}
-      <h1 className="mt-12 flex flex-col font-extrabold text-5xl    ">
+      <h1 className="mt-12 flex flex-col font-extrabold text-5xl  mb-4 ">
         <span className="font-bold text-red-900 text-lg">Introducing</span>{' '}
         Blockchain for beginners
       </h1>
+      <img src={`/images/blockchain.jpg`} alt="blocks chained together" />
       <p className="text-grayish ">
         A blockchain is a digital ledger that records transactions within the
         Bitcoin network. Traditionally, a ledger is simply a collection or book
@@ -58,72 +59,102 @@ const Topic1 = () => {
         transactions are stored in blocks, protected by cryptographic methods.
         You can revisit cryptography in the previous module for more on this.
       </p>
-      <img
-        src={`${process.env.PUBLIC_URL}/images/blockchain.jpg`}
-        alt="blocks chained together"
-      />
+      <img src={`/images/blockchain2.png`} alt="blocks chained together" />
 
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, eum
-        totam veniam, quibusdam praesentium a officia odit magnam enim
-        accusamus, laborum asperiores quasi voluptate culpa quis facere! Iure,
-        voluptatem dolorum incidunt, ducimus nihil debitis possimus, tempore
-        temporibus nemo quibusdam sit! Tempore dolor perspiciatis libero, quia
-        labore, nobis, distinctio animi iste ea ut temporibus adipisci rem
-        asperiores facilis. Consequuntur consequatur corrupti illum nisi,
-        quibusdam incidunt quidem dolores obcaecati optio at, ad ipsum odio
-        suscipit iste cupiditate fuga veniam explicabo, perferendis quo natus?
-        Porro, numquam quae. Alias facilis aperiam dicta aspernatur ad tenetur
-        voluptas porro earum nisi non perferendis mollitia, quas nam odit? Earum
-        et dolor eum at rem, quas ex eos maiores provident quos? Reiciendis
-        aspernatur corporis nam saepe dolore optio maiores officia. Soluta optio
-        asperiores provident commodi odit. Odio vero magni doloremque beatae.
-        Nisi sit quia debitis error iure? Eos velit nostrum voluptatum eligendi
-        quod in autem dolorum ab nemo excepturi voluptatem officiis eius,
-        impedit voluptas magni quia iusto similique, mollitia id, iure rem
-        cumque harum. Harum amet quis ea nobis provident, alias officia omnis
-        fugiat atque cum voluptate numquam voluptatum laborum incidunt adipisci
-        itaque laboriosam. Ea aliquam at perferendis similique ad cumque
-        molestiae adipisci sit. Iusto eligendi odio modi!
-      </p>
-      <img
-        src={`${process.env.PUBLIC_URL}/images/blockchain2.png`}
-        alt="blocks chained together"
-      />
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod amet
-        magni harum? Explicabo hic consequuntur sed provident voluptate veniam
-        necessitatibus sequi, porro harum magni dolorum, neque nam placeat.
-        Veniam ea asperiores laudantium id provident praesentium cumque
-        suscipit, delectus assumenda, nihil eligendi magni modi fugiat aliquid
-        excepturi voluptate, quos aliquam perferendis? Provident aliquam eum
-        suscipit quam vitae corporis repudiandae. Expedita optio magnam natus ea
-        ad eveniet facilis dolores voluptas quae fugit, repellat provident
-        aspernatur pariatur officiis sunt accusantium possimus magni minima
-        nesciunt, numquam inventore aperiam! Hic necessitatibus, nesciunt ipsum
-        magnam magni aliquid tempore nostrum cum perferendis nulla
-        exercitationem officiis, alias sequi.
+        You might be familiar with spreadsheets or databases. A blockchain is
+        somewhat similar because it is a database where information is entered
+        and stored. The key difference between a traditional database or
+        spreadsheet and a blockchain is how the data is structured and accessed.
+        A blockchain consists of programs called scripts that conduct the tasks
+        you usually would in a database: entering and accessing information, and
+        saving and storing it somewhere. A blockchain is distributed, which
+        means multiple copies are saved on many machines, and they must all
+        match for it to be valid. The Bitcoin blockchain collects transaction
+        information and enters it into a 4MB file called a block (different
+        blockchains have different size blocks). Once the block is full, the
+        block data is run through a cryptographic hash function, which creates a
+        hexadecimal number called the block header hash. The hash is then
+        entered into the following block header and encrypted with the other
+        information in that block's header, creating a chain of blocks, hence
+        the name “blockchain.”
       </p>
 
       <h2 className="mt-12 flex flex-col font-extrabold text-3xl mb-5">
-        Benefits of Blockchain
+        Transaction Process
       </h2>
-      <ol>
-        <li>
-          <strong>1. Good</strong> Lorem ipsum dolor, sit amet consectetur
-          adipisicing elit. Iste mollitia, non error laudantium possimus
-          repellat.
-        </li>
-        <li>
-          <strong>2. Good</strong> Lorem ipsum dolor sit amet consectetur,
-          adipisicing elit. Culpa, provident dicta nostrum cum dolor amet?
-        </li>
-        <li>
-          <strong>3. Good</strong> Lorem, ipsum dolor sit amet consectetur
-          adipisicing elit. Fugit facilis soluta error.
-        </li>
-      </ol>
+      <p>
+        Transactions follow a specific process, depending on the blockchain. For
+        example, on Bitcoin's blockchain, if you initiate a transaction using
+        your cryptocurrency wallet—the application that provides an interface
+        for the blockchain—it starts a sequence of events. In Bitcoin, your
+        transaction is sent to a memory pool, where it is stored and queued
+        until a miner picks it up. Once it is entered into a block and the block
+        fills up with transactions, it is closed, and the mining begins. Every
+        node in the network proposes its own blocks in this way because they all
+        choose different transactions. Each works on their own blocks, trying to
+        find a solution to the difficulty target, using the "nonce," short for
+        number used once. The nonce value is a field in the block header that is
+        changeable, and its value incrementally increases with every mining
+        attempt. If the resulting hash isn't equal to or less than the target
+        hash, a value of one is added to the nonce, a new hash is generated, and
+        so on. The nonce rolls over about every 4.5 billion attempts (which
+        takes less than one second) and uses another value called the extra
+        nonce as an additional counter. This continues until a miner generates a
+        valid hash, winning the race and receiving the reward.
+      </p>
+      <p>
+        Once a block is closed, a transaction is complete. However, the block is
+        not considered confirmed until five other blocks have been validated.
+        Confirmation takes the network about one hour to complete because it
+        averages just under 10 minutes per block (the first block with your
+        transaction and five following blocks multiplied by 10 equals 60
+        minutes). Not all blockchains follow this process. For instance, the
+        Ethereum network randomly chooses one validator from all users with
+        ether staked to validate blocks, which are then confirmed by the
+        network. This is much faster and less energy intensive than Bitcoin's
+        process.
+      </p>
+      <h2 className="mt-12 flex flex-col font-extrabold text-3xl mb-5">
+        Blockchain Decentralization
+      </h2>
+      <p>
+        A blockchain allows the data in a database to be spread out among
+        several network nodes—computers or devices running software for the
+        blockchain—at various locations. This creates redundancy and maintains
+        the fidelity of the data. For example, if someone tries to alter a
+        record on one node, the other nodes would prevent it from happening by
+        comparing block hashes. This way, no single node can alter information
+        within the chain. Because of this distribution—and the encrypted proof
+        that work was done—the blockchain data, such as transaction history,
+        becomes irreversible. Such a record could be a list of transactions, but
+        private blockchains can also hold a variety of other information like
+        legal contracts, state identifications, or a company's inventory. Most
+        blockchains wouldn't "store" these items directly; they would likely be
+        sent through a hashing algorithm and represented on the blockchain by a
+        token.
+      </p>
 
+      <h2 className="mt-12 flex flex-col font-extrabold text-3xl mb-5">
+        Blockchain Transparency
+      </h2>
+
+      <p>
+        Because of the decentralized nature of the Bitcoin blockchain, all
+        transactions can be transparently viewed by downloading and inspecting
+        them or by using blockchain explorers that allow anyone to see
+        transactions occurring live. Each node has its own copy of the chain
+        that gets updated as fresh blocks are confirmed and added. This means
+        that if you wanted to, you could track a bitcoin wherever it goes. For
+        example, exchanges have been hacked in the past, resulting in the loss
+        of large amounts of cryptocurrency. While the hackers may have been
+        anonymous—except for their wallet address—the crypto they extracted is
+        easily traceable because the wallet addresses are stored on the
+        blockchain. Of course, the records stored in the Bitcoin blockchain (as
+        well as most others) are encrypted. This means that only the person
+        assigned an address can reveal their identity. As a result, blockchain
+        users can remain anonymous while preserving transparency.
+      </p>
       <button
         className="rounded-lg border-x-red-700 border-2 p-3 px-8 bg-red-700 mt-7 text-white font-bold text-lg block mx-auto mb-10 "
         onClick={() => {
