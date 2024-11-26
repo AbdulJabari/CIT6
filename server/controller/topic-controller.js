@@ -6,7 +6,7 @@ const fs = require('fs')
 const path = require('path')
 // ../../client/src/pages/Topics/
 const generateComponent = (req, res) => {
-  const { componentName, id } = req.body
+  const { componentName, id, topicTitle } = req.body
   if (!componentName) {
     return res.status(400).send('Component name is required')
   }
@@ -18,13 +18,56 @@ const generateComponent = (req, res) => {
 
   const filePath = path.join(dirPath, `${componentName}.jsx`)
   const componentContent = `
-import React from 'react';
+import { useContext, useEffect, useRef, useState } from 'react'
+import ModalQuiz from '../../../components/ModalQuiz/ModalQuiz'
+import { beginnerModules } from '../../../modules'
+import { GiBrain } from 'react-icons/gi'
+import { GlobalContext } from '../../../context/GlobalState'
 
-const ${componentName} = () => {
-    return (
-        <div>
-            <h1>Hello, ${componentName}!</h1>
-        </div>
+const Topic${id} = () => {
+  const [showModalPopup, setShowModalPopup] = useState(false)
+  const [time, setTime] = useState(0)
+  const [isTimeRunning, setIsTimeRunning] = useState(true)
+  const { handleUpdateTimeFinished } = useContext(GlobalContext)
+
+  function handleToggleModalPopup() {
+    handleUpdateTimeFinished(beginnerModules[0].id, time)
+    setShowModalPopup(!showModalPopup)
+  }
+
+  function onClose() {
+    setShowModalPopup(false)
+  }
+
+  const timer = useRef()
+
+  useEffect(() => {
+    if (isTimeRunning) {
+      timer.current = setInterval(() => {
+        setTime((pre) => pre + 1)
+      }, 1000)
+    }
+    return () => clearInterval(timer.current)
+  }, [isTimeRunning])
+
+  console.log('Time spent: ', time)
+  return (
+    <div
+      className={\`w-[50vw] h-auto mx-auto mt-24 font-sans color \${showModalPopup ? 'overflow-hidden' : ''}\`}
+    >
+      {showModalPopup && (
+        <ModalQuiz
+          onClose={onClose}
+          time={time}
+          questions={beginnerModules[0].questions}
+          moduleId={beginnerModules[0].id}
+        />
+      )}
+      <h1 className="mt-12 flex flex-col font-extrabold text-5xl  mb-4 ">
+        <span className="font-bold text-red-900 text-lg">Introducing</span>{' '}
+        Blockchain for beginners
+      </h1>
+      </div>
     );
 };
 
