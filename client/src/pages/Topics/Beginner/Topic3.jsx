@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import ModalQuiz from '../../../components/ModalQuiz/ModalQuiz'
 import { beginnerModules } from '../../../modules'
+import { useNavigate } from 'react-router-dom'
+import { GiBrain } from 'react-icons/gi'
 
 const Topic3 = () => {
   const [showModalPopup, setShowModalPopup] = useState(false)
-  const [time, setTime] = useState(0)
-  const [isTimeRunning, setIsTimeRunning] = useState(true)
+  // const [time, setTime] = useState(0)
+  // const [isTimeRunning, setIsTimeRunning] = useState(true)
+  const navigate = useNavigate()
 
   function handleToggleModalPopup() {
     setShowModalPopup(!showModalPopup)
@@ -15,27 +18,16 @@ const Topic3 = () => {
     setShowModalPopup(false)
   }
 
-  function timeFormat(time) {
-    let hours = Math.floor((time / 60 / 60) % 24)
-    let minutes = Math.floor((time / 60) % 60)
-    let seconds = Math.floor(time % 60)
+  // const timer = useRef()
 
-    hours = hours < 10 ? '0' + hours : hours
-    minutes = minutes < 10 ? '0' + minutes : minutes
-    seconds = seconds < 10 ? '0' + seconds : seconds
-    return hours + ':' + minutes + ':' + seconds
-  }
-
-  const timer = useRef()
-
-  useEffect(() => {
-    if (isTimeRunning) {
-      timer.current = setInterval(() => {
-        setTime((pre) => pre + 1)
-      }, 1000)
-    }
-    return () => clearInterval(timer.current)
-  }, [isTimeRunning])
+  // useEffect(() => {
+  //   if (isTimeRunning) {
+  //     timer.current = setInterval(() => {
+  //       setTime((pre) => pre + 1)
+  //     }, 1000)
+  //   }
+  //   return () => clearInterval(timer.current)
+  // }, [isTimeRunning])
 
   useEffect(() => {
     window.scrollTo({
@@ -43,7 +35,7 @@ const Topic3 = () => {
     })
   }, [])
 
-  console.log('Time spent: ', time)
+  // console.log('Time spent: ', time)
   return (
     <div
       className={`w-[50vw] h-auto mx-auto mt-24 font-sans color ${
@@ -53,9 +45,8 @@ const Topic3 = () => {
       {showModalPopup && (
         <ModalQuiz
           onClose={onClose}
-          time={time}
-          questions={beginnerModules[1].questions}
-          moduleId={beginnerModules[1].id}
+          questions={beginnerModules[2].questions}
+          moduleId={beginnerModules[2].id}
         />
       )}
       <h1 className="mt-12 flex flex-col font-extrabold text-5xl    ">
@@ -167,13 +158,31 @@ const Topic3 = () => {
       <button
         className="rounded-lg border-x-red-700 border-2 p-3 px-8 bg-red-700 mt-7 text-white font-bold text-lg block mx-auto mb-10"
         onClick={() => {
-          clearInterval(timer.current)
-          setIsTimeRunning(false)
+          // clearInterval(timer.current)
+          // setIsTimeRunning(false)
           handleToggleModalPopup()
         }}
       >
+        <GiBrain
+          className="inline-block"
+          style={{ height: '30px', width: '25px', marginRight: '3px' }}
+        />
         Take Quiz
       </button>
+      <div className="w-full flex  justify-between items-center mb-5">
+        <button
+          className="rounded-lg  p-3 px-8 bg-green-600 mt-7 text-white font-bold text-lg  mb-2"
+          onClick={() => navigate(`/modules/${beginnerModules[1].id}`)}
+        >
+          Previous Module
+        </button>
+        <button
+          className="rounded-lg  p-3 px-8 bg-green-600 mt-7 text-white font-bold text-lg mb-2"
+          onClick={() => navigate(`/modules/${beginnerModules[0].id}`)}
+        >
+          Next Module
+        </button>
+      </div>
     </div>
   )
 }

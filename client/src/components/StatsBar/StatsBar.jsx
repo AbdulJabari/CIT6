@@ -15,9 +15,8 @@ const StatsBar = ({ stat, color, size }) => {
           <p className="opacity-0 text-xs">.</p>
           <p className="mt-0">{moduleName}</p>
         </div>
-        <div className="mt-0 ">
+        <div className="mt-4 ">
           <p>{`${quizScore}/${quizLength}`}</p>
-          <p className="mt-0">{timeFormat(timeCompleted)}</p>
         </div>
       </div>
       <div className={`w-[82%] ml-12 mt-2`}>

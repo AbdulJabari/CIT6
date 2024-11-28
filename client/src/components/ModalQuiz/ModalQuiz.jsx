@@ -6,14 +6,20 @@ import { useNavigate } from 'react-router-dom'
 import { beginnerModules } from '../../modules'
 import { GlobalContext } from '../../context/GlobalState'
 
-const ModalQuiz = ({ onClose, time, questions, moduleId }) => {
+const ModalQuiz = ({ onClose, questions, moduleId }) => {
   const [numCorrect, setNumCorrect] = useState(0)
   const [questionIndex, setQuestionIndex] = useState(0)
   const navigate = useNavigate()
-  const { timeFormat, handleUpdateQuizScore } = useContext(GlobalContext)
+  const { handleUpdateQuizScore, handleUpdateAnswer } =
+    useContext(GlobalContext)
 
   function handleOptionClick(e) {
     if (questionIndex < questions.length) {
+      handleUpdateAnswer(
+        moduleId,
+        questions[questionIndex].questionNo,
+        e.target.innerHTML
+      )
       if (
         e.target.innerHTML.toLowerCase() ===
         questions[questionIndex].answer.toLowerCase()
@@ -134,21 +140,14 @@ const ModalQuiz = ({ onClose, time, questions, moduleId }) => {
             <h3 className="font-bold text-2xl -mt-4">
               {numCorrect} / {questions.length}
             </h3>
-            <div className="inline-block text-left">
-              <h4>
-                <span className="font-bold">Time Spent:</span>{' '}
-                {timeFormat(time)}
-              </h4>
-              <h4>
-                <span className="font-bold">Average Time Spent:</span>{' '}
-                {timeFormat(beginnerModules[0].duration)}
-              </h4>
-            </div>
+
             <button
               className="rounded-lg  p-3 px-8 bg-green-600 mt-7 text-white font-bold text-lg block mx-auto mb-2"
-              onClick={() => navigate(`/modules/${beginnerModules[1].id}`)}
+              onClick={() =>
+                navigate('/keyanswers', { state: { questions, moduleId } })
+              }
             >
-              Next Module
+              Check Answers
             </button>
           </div>
         )}

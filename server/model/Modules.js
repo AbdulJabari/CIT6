@@ -1,6 +1,15 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+const answerSchema = new Schema({
+  questionNum: {
+    type: Number,
+  },
+  answer: {
+    type: String,
+  },
+})
+
 const moduleSchema = new Schema({
   moduleId: {
     type: String,
@@ -21,6 +30,9 @@ const moduleSchema = new Schema({
   quizLength: {
     type: Number,
   },
+  answersList: {
+    type: [answerSchema],
+  },
 })
 
 const moduleListSchema = new Schema({
@@ -37,62 +49,148 @@ const moduleListSchema = new Schema({
         timeCompleted: 0,
         quizScore: 0,
         quizLength: 10,
+        answersList: [
+          {
+            questionNum: 1,
+            answer: '',
+          },
+          {
+            questionNum: 2,
+            answer: '',
+          },
+          {
+            questionNum: 3,
+            answer: '',
+          },
+          {
+            questionNum: 4,
+            answer: '',
+          },
+          {
+            questionNum: 5,
+            answer: '',
+          },
+          {
+            questionNum: 6,
+            answer: '',
+          },
+          {
+            questionNum: 7,
+            answer: '',
+          },
+          {
+            questionNum: 8,
+            answer: '',
+          },
+          {
+            questionNum: 9,
+            answer: '',
+          },
+          {
+            questionNum: 10,
+            answer: '',
+          },
+        ],
       },
       {
         moduleId: '2',
-        moduleName: 'Blockchain Architecture',
+        moduleName: 'Core Ideas Behind Blockchain Technology',
         isFinished: false,
         timeCompleted: 0,
         quizScore: 0,
         quizLength: 10,
+        answersList: [
+          {
+            questionNum: 1,
+            answer: '',
+          },
+          {
+            questionNum: 2,
+            answer: '',
+          },
+          {
+            questionNum: 3,
+            answer: '',
+          },
+          {
+            questionNum: 4,
+            answer: '',
+          },
+          {
+            questionNum: 5,
+            answer: '',
+          },
+          {
+            questionNum: 6,
+            answer: '',
+          },
+          {
+            questionNum: 7,
+            answer: '',
+          },
+          {
+            questionNum: 8,
+            answer: '',
+          },
+          {
+            questionNum: 9,
+            answer: '',
+          },
+          {
+            questionNum: 10,
+            answer: '',
+          },
+        ],
       },
       {
         moduleId: '3',
-        moduleName: 'Introduction to Blockchain',
+        moduleName: 'Cryptography Basics',
         isFinished: false,
         timeCompleted: 0,
         quizScore: 0,
         quizLength: 10,
-      },
-      {
-        moduleId: '4',
-        moduleName: 'Blockchain Architecture',
-        isFinished: false,
-        timeCompleted: 0,
-        quizScore: 0,
-        quizLength: 10,
-      },
-      {
-        moduleId: '5',
-        moduleName: 'Blockchain Architecture',
-        isFinished: false,
-        timeCompleted: 0,
-        quizScore: 0,
-        quizLength: 10,
-      },
-      {
-        moduleId: '6',
-        moduleName: 'Blockchain Architecture',
-        isFinished: false,
-        timeCompleted: 0,
-        quizScore: 0,
-        quizLength: 10,
-      },
-      {
-        moduleId: '7',
-        moduleName: 'Blockchain Architecture',
-        isFinished: false,
-        timeCompleted: 0,
-        quizScore: 0,
-        quizLength: 10,
-      },
-      {
-        moduleId: '8',
-        moduleName: 'Blockchain Architecture',
-        isFinished: false,
-        timeCompleted: 0,
-        quizScore: 0,
-        quizLength: 10,
+        answersList: [
+          {
+            questionNum: 1,
+            answer: '',
+          },
+          {
+            questionNum: 2,
+            answer: '',
+          },
+          {
+            questionNum: 3,
+            answer: '',
+          },
+          {
+            questionNum: 4,
+            answer: '',
+          },
+          {
+            questionNum: 5,
+            answer: '',
+          },
+          {
+            questionNum: 6,
+            answer: '',
+          },
+          {
+            questionNum: 7,
+            answer: '',
+          },
+          {
+            questionNum: 8,
+            answer: '',
+          },
+          {
+            questionNum: 9,
+            answer: '',
+          },
+          {
+            questionNum: 10,
+            answer: '',
+          },
+        ],
       },
     ],
   },

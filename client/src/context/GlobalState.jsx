@@ -9,14 +9,39 @@ export default function GlobalState({ children }) {
   const [stats, setStats] = useState([])
   const [userId, setUserId] = useState(null)
   const [loading, setLoading] = useState(false)
-  const [loadingTopics, setLoadingTopics] = useState(false)
+  const [loadingApi, setLoadingApi] = useState(false)
+  // const [loadingTopics, setLoadingTopics] = useState(false)
+  const [apiResponse, setApiResponse] = useState([])
+  // const [beginnerModules, setBeginnerModules] = useState([...beginnerModules])
 
-  const [beginnerModules, setBeginnerModules] = useState([])
+  function getWrongAnswers() {
+    let wrongAnswersList = []
+
+    beginnerModules.map((module, index1) => {
+      wrongAnswersList.push({
+        title: module.name,
+        wrongAnswers: [],
+      })
+
+      module.questions.map((question, index2) => {
+        if (question.answer !== stats[index1].answersList[index2].answer) {
+          wrongAnswersList[index1].wrongAnswers.push({
+            question: question.question,
+            answer: stats[index1].answersList[index2].answer,
+          })
+        }
+      })
+    })
+    return wrongAnswersList
+  }
 
   function computeStrugglingLessons() {
     const strugglingLessons = []
     beginnerModules.map((module, index) => {
-      if (stats[index].timeCompleted > module.duration) {
+      if (
+        stats[index].quizScore < module.passingScore &&
+        stats[index].isFinished
+      ) {
         return strugglingLessons.push(stats[index])
       }
     })
@@ -27,7 +52,10 @@ export default function GlobalState({ children }) {
   function computeExcellingLessons() {
     const excellingLessons = []
     beginnerModules.map((module, index) => {
-      if (stats[index].timeCompleted < module.duration) {
+      if (
+        stats[index].quizScore > module.passingScore &&
+        stats[index].isFinished
+      ) {
         return excellingLessons.push(stats[index])
       }
     })
@@ -46,21 +74,22 @@ export default function GlobalState({ children }) {
     return hours + ':' + minutes + ':' + seconds
   }
 
-  async function fetchListOfTopics() {
-    setLoadingTopics(true)
-    const response = await axios.get('http://localhost:5000/api/topics/admin')
-    const result = await response.data
+  // async function fetchListOfTopics() {
+  //   // setLoadingTopics(true)
+  //   // const response = await axios.get('http://localhost:5000/api/topics/admin')
+  //   // const result = await response.data
 
-    if (result && result.topicList.length > 0) {
-      setBeginnerModules(result.topicList)
-      setLoadingTopics(false)
-    }
-  }
+  //   // setBeginnerModules(beginnerModules)
+  //   // setLoadingTopics(false)
+  //   // if (result && result.topicList.length > 0) {
+  //   // }
+  // }
 
   async function fetchListOfModules() {
     setLoading(true)
     const response = await axios.get('http://localhost:5000/api/modules')
     const result = await response.data
+
     if (result && result.moduleList[0] && result.moduleList[0].modules.length) {
       setStats(result.moduleList[0].modules)
       setUserId(result.moduleList[0]._id)
@@ -68,67 +97,81 @@ export default function GlobalState({ children }) {
     }
   }
 
-  async function handleDeleteATopic(getCurrentId, moduleId) {
-    const response = await axios.delete(
-      `http://localhost:5000/api/topics/admin/delete/${getCurrentId}?moduleId=${moduleId}`
-    )
+  async function fetchListOfApiResponse() {
+    setLoadingApi(true)
+    const response = await axios.post('http://localhost:5000/api/utils', {
+      wrongAnswers: wrongAnswersList,
+    })
     const result = await response.data
-    if (result?.message) {
-      fetchListOfTopics()
-    }
-  }
-
-  async function handleAddNewModule(title, keywords_split, description) {
-    const response = await axios.post(
-      'http://localhost:5000/api/topics/admin/add',
-      {
-        id: beginnerModules.length + 1,
-        name: title,
-        keywords: keywords_split,
-        desc: description,
-        passingScore: 5,
-        duration: 60,
-      }
-    )
-
-    const result = response?.data?.newlyCreatedTopic
 
     if (result) {
-      fetchListOfTopics()
-      createComponentOnServer(
-        `Topic${beginnerModules.length + 1}`,
-        beginnerModules.length + 1
-      )
+      console.log('This is the API Response: ', result)
+      setApiResponse(result)
+      setLoadingApi(false)
     }
   }
 
-  async function createComponentOnServer(componentName, id) {
-    const response = await fetch(
-      'http://localhost:5000/api/topics/admin/generate-component',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ componentName, id }),
-      }
-    )
+  // async function handleDeleteATopic(getCurrentId, moduleId) {
+  //   const response = await axios.delete(
+  //     `http://localhost:5000/api/topics/admin/delete/${getCurrentId}?moduleId=${moduleId}`
+  //   )
+  //   const result = await response.data
+  //   if (result?.message) {
+  //     fetchListOfTopics()
+  //   }
+  // }
 
-    if (response.ok) {
-      alert('Component created successfully on server!')
-    } else {
-      alert('Failed to create component.')
-    }
-  }
+  // async function handleAddNewModule(title, keywords_split, description) {
+  //   const response = await axios.post(
+  //     'http://localhost:5000/api/topics/admin/add',
+  //     {
+  //       id: beginnerModules.length + 1,
+  //       name: title,
+  //       keywords: keywords_split,
+  //       desc: description,
+  //       passingScore: 5,
+  //       duration: 60,
+  //     }
+  //   )
 
-  function handleUpdateTimeFinished(getCurrentId, timeFinished) {
-    let cpyStats = [...stats]
-    const currentModule = cpyStats.find(
-      (stat) => stat.moduleId === getCurrentId
-    )
-    currentModule.timeCompleted = timeFinished
-    currentModule.isFinished = true
+  //   const result = response?.data?.newlyCreatedTopic
 
-    handleUpdateAModule(cpyStats)
-  }
+  //   if (result) {
+  //     fetchListOfTopics()
+  //     createComponentOnServer(
+  //       `Topic${beginnerModules.length + 1}`,
+  //       beginnerModules.length + 1
+  //     )
+  //   }
+  // }
+
+  // async function createComponentOnServer(componentName, id) {
+  //   const response = await fetch(
+  //     'http://localhost:5000/api/topics/admin/generate-component',
+  //     {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify({ componentName, id }),
+  //     }
+  //   )
+
+  //   if (response.ok) {
+  //     alert('Component created successfully on server!')
+  //   } else {
+  //     alert('Failed to create component.')
+  //   }
+  // }
+
+  // function handleUpdateTimeFinished(getCurrentId, timeFinished) {
+  //   let cpyStats = [...stats]
+  //   const currentModule = cpyStats.find(
+  //     (stat) => stat.moduleId === getCurrentId
+  //   )
+  //   currentModule.timeCompleted = timeFinished
+  //   currentModule.isFinished = true
+
+  //   handleUpdateAModule(cpyStats)
+  // }
 
   function handleUpdateQuizScore(getCurrentId, quizScore) {
     let cpyStats = [...stats]
@@ -137,7 +180,27 @@ export default function GlobalState({ children }) {
     )
 
     currentModule.quizScore = quizScore
+    currentModule.isFinished = true
 
+    handleUpdateAModule(cpyStats)
+  }
+
+  function handleUpdateAnswer(getCurrentId, questionNo, answer) {
+    console.log('Current Id of the module: ', getCurrentId)
+    console.log('question No: ', questionNo)
+    console.log('The user answer to the question No: ', answer)
+    let cpyStats = [...stats]
+    console.log('This is the the stats: ', cpyStats)
+    const currentModule = cpyStats.find(
+      (stat) => stat.moduleId === getCurrentId
+    )
+    console.log('These is the current Module: ', currentModule)
+
+    const currentQuestion = currentModule.answersList.find(
+      (question) => question.questionNum === questionNo
+    )
+    currentQuestion.answer = answer
+    console.log(cpyStats)
     handleUpdateAModule(cpyStats)
   }
 
@@ -165,10 +228,15 @@ export default function GlobalState({ children }) {
 
   const excellingLessons = stats?.length > 0 ? computeExcellingLessons() : null
 
+  const wrongAnswersList = stats?.length > 0 ? getWrongAnswers() : null
+
   useEffect(() => {
     fetchListOfModules()
-    fetchListOfTopics()
+
+    // fetchListOfTopics()
   }, [])
+
+  console.log('These are the wrong answers of the user: ', wrongAnswersList)
 
   return (
     <GlobalContext.Provider
@@ -178,14 +246,19 @@ export default function GlobalState({ children }) {
         stats,
         loading,
         completedLessonsCounter,
-        beginnerModules,
-        loadingTopics,
+        wrongAnswersList,
+        apiResponse,
+        loadingApi,
+        // beginnerModules,
+        // loadingTopics,
         timeFormat,
-        handleUpdateTimeFinished,
+        // handleUpdateTimeFinished,
         handleUpdateQuizScore,
         fetchListOfModules,
-        handleAddNewModule,
-        handleDeleteATopic,
+        // handleAddNewModule,
+        // handleDeleteATopic,
+        handleUpdateAnswer,
+        fetchListOfApiResponse,
       }}
     >
       {children}

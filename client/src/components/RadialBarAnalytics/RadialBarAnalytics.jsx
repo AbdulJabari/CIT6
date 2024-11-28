@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import Chart from 'react-apexcharts'
-import { stats } from '../../stats'
 
 class RadialBarAnalytics extends Component {
   constructor(props) {
-    const { completed = 20, notCompleted = 35 } = props
+    const { completed = 20, notCompleted = 35, stats } = props
     super(props)
+    console.log(stats)
     this.state = {
       options: {
         plotOptions: {

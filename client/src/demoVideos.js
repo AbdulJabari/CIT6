@@ -1,8 +1,6 @@
-import { v4 as uuidv4 } from 'uuid'
-
 export const beginnerDemos = [
   {
-    id: uuidv4(),
+    id: 1,
     title: 'What is  Blockchain',
     duration: '4 minutes',
     link: 'https://youtu.be/yubzJw0uiE4',
@@ -19,7 +17,7 @@ export const beginnerDemos = [
           ea ad tempore earum totam quas iste. Quas, mollitia?`,
   },
   {
-    id: uuidv4(),
+    id: 1,
     title: 'How does Blockchain work',
     duration: '6 minutes',
     link: 'https://www.youtube.com/watch?v=SSo_EIwHSd4',
@@ -36,7 +34,7 @@ export const beginnerDemos = [
           ea ad tempore earum totam quas iste. Quas, mollitia?`,
   },
   {
-    id: uuidv4(),
+    id: 1,
     title: 'Blockchain Technology Explained',
     duration: '2 hours',
     link: 'https://www.youtube.com/watch?v=-_Qs0XdPpw8',
@@ -53,7 +51,7 @@ export const beginnerDemos = [
           ea ad tempore earum totam quas iste. Quas, mollitia?`,
   },
   {
-    id: uuidv4(),
+    id: 1,
     title: 'Blockchain Technology Explained',
     duration: '2 hours',
     link: 'https://www.youtube.com/watch?v=-_Qs0XdPpw8',

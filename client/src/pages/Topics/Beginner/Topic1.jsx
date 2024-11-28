@@ -3,15 +3,17 @@ import ModalQuiz from '../../../components/ModalQuiz/ModalQuiz'
 import { beginnerModules } from '../../../modules'
 import { GiBrain } from 'react-icons/gi'
 import { GlobalContext } from '../../../context/GlobalState'
+import { useNavigate } from 'react-router-dom'
 
 const Topic1 = () => {
   const [showModalPopup, setShowModalPopup] = useState(false)
-  const [time, setTime] = useState(0)
-  const [isTimeRunning, setIsTimeRunning] = useState(true)
-  const { handleUpdateTimeFinished } = useContext(GlobalContext)
+  // const [time, setTime] = useState(0)
+  // const [isTimeRunning, setIsTimeRunning] = useState(true)
+  // const { handleUpdateTimeFinished } = useContext(GlobalContext)
+  const navigate = useNavigate()
 
   function handleToggleModalPopup() {
-    handleUpdateTimeFinished(beginnerModules[0].id, time)
+    // handleUpdateTimeFinished(beginnerModules[0].id, time)
     setShowModalPopup(!showModalPopup)
   }
 
@@ -19,18 +21,18 @@ const Topic1 = () => {
     setShowModalPopup(false)
   }
 
-  const timer = useRef()
+  // const timer = useRef()
 
-  useEffect(() => {
-    if (isTimeRunning) {
-      timer.current = setInterval(() => {
-        setTime((pre) => pre + 1)
-      }, 1000)
-    }
-    return () => clearInterval(timer.current)
-  }, [isTimeRunning])
+  // useEffect(() => {
+  //   if (isTimeRunning) {
+  //     timer.current = setInterval(() => {
+  //       setTime((pre) => pre + 1)
+  //     }, 1000)
+  //   }
+  //   return () => clearInterval(timer.current)
+  // }, [isTimeRunning])
 
-  console.log('Time spent: ', time)
+  // console.log('Time spent: ', time)
   return (
     <div
       className={`w-[50vw] h-auto mx-auto mt-24 font-sans color ${
@@ -40,7 +42,6 @@ const Topic1 = () => {
       {showModalPopup && (
         <ModalQuiz
           onClose={onClose}
-          time={time}
           questions={beginnerModules[0].questions}
           moduleId={beginnerModules[0].id}
         />
@@ -158,12 +159,9 @@ const Topic1 = () => {
       <button
         className="rounded-lg border-x-red-700 border-2 p-3 px-8 bg-red-700 mt-7 text-white font-bold text-lg block mx-auto mb-10 "
         onClick={() => {
-          clearInterval(timer.current)
-          setIsTimeRunning(false)
-
+          // clearInterval(timer.current)
+          // setIsTimeRunning(false)
           handleToggleModalPopup()
-          console.log(typeof time)
-          console.log('time Finalize' + time)
         }}
       >
         <GiBrain
@@ -171,6 +169,12 @@ const Topic1 = () => {
           style={{ height: '30px', width: '25px', marginRight: '3px' }}
         />
         Take Quiz
+      </button>
+      <button
+        className="rounded-lg  p-3 px-8 bg-green-600 mt-7 text-white font-bold text-lg block mx-auto mb-2"
+        onClick={() => navigate(`/modules/${beginnerModules[0 + 1].id}`)}
+      >
+        Next Module
       </button>
     </div>
   )

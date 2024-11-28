@@ -1,4 +1,4 @@
-// import { beginnerModules } from '../../modules'
+import { beginnerModules } from '../../modules'
 import { useNavigate } from 'react-router-dom'
 import { FaArrowRight, FaLightbulb } from 'react-icons/fa'
 import './modules.css'
@@ -7,7 +7,7 @@ import { useContext } from 'react'
 
 export default function Modules() {
   const navigate = useNavigate()
-  const { beginnerModules } = useContext(GlobalContext)
+  // const { beginnerModules } = useContext(GlobalContext)
   return (
     <div className="font-sans mt-12 w-[95vw] h-[100vh]  flex-col p-3 pl-10">
       <h1 className="mt-4 text-green-600 font-bold text-3xl  mb-2 tracking-wider">
@@ -45,7 +45,7 @@ export default function Modules() {
           )
         })}
       </div>
-      <h1 className="mt-16 text-yellow-600 font-bold text-3xl  mb-2 tracking-wider">
+      {/* <h1 className="mt-16 text-yellow-600 font-bold text-3xl  mb-2 tracking-wider">
         Intermediate Topics
       </h1>
       <div className="w-[90%] h-[2px] border border-yellow-600"></div>
@@ -76,7 +76,7 @@ export default function Modules() {
             </div>
           )
         })}
-      </div>
+      </div> */}
     </div>
   )
 }

@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Demos from './pages/Demos'
 import Home from './pages/Home'
-import Modules from './pages/ModulesAdmin'
+import Modules from './pages/Modules'
 import Topic1 from './pages/Topics/Beginner/Topic1'
 import { beginnerModules } from './modules'
 import Topic2 from './pages/Topics/Beginner/Topic2'
@@ -17,6 +17,7 @@ import ConceptBooster from './pages/DashboardPages/ConceptBooster'
 import { useContext } from 'react'
 import { GlobalContext } from './context/GlobalState'
 import Topic3 from './pages/Topics/Beginner/Topic3'
+import KeyAnswers from './components/KeyAnswers/KeyAnswers'
 
 function App() {
   const { loading } = useContext(GlobalContext)
@@ -25,10 +26,6 @@ function App() {
     <div>
       <Navbar />
       <Routes>
-
-
-
-
         <Route exact path="/" element={<Home />} />
 
         <Route path="/demos" element={<Demos />} />
@@ -36,7 +33,8 @@ function App() {
           path={`/demos/${beginnerDemos[0].id}`}
           element={<DemoVideo1 />}
         />
-        <Route path="/modulesadmin" element={<Modules />} />
+        <Route path="/keyanswers" element={<KeyAnswers />} />
+        <Route path="/modules" element={<Modules />} />
         <Route
           path={`/modules/${beginnerModules[0].id}`}
           element={<Topic1 />}

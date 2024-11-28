@@ -29,21 +29,13 @@ export default function LessonsOfExcellence() {
                     return (
                       <StatsBar
                         stat={lesson}
-                        color={'#E53935'}
+                        color={'#43A047'}
                         size={'large'}
                       />
                     )
                   }
                 })
               : null}
-
-            {excellingLessons?.length >= 4 ? (
-              <div className="mt-2 mr-7 text-blue-600">
-                <h4 className="text-right text-xl">
-                  <FaAnglesRight className="text-right inline-block" /> See more
-                </h4>
-              </div>
-            ) : null}
           </div>
         </div>
       </div>

@@ -1,12 +1,12 @@
 import RadialBarAnalytics from '../../components/RadialBarAnalytics/RadialBarAnalytics'
 import { FaAnglesRight } from 'react-icons/fa6'
 import StatsBar from '../../components/StatsBar/StatsBar'
-import { stats } from '../../stats'
 import { useContext } from 'react'
 import { GlobalContext } from '../../context/GlobalState'
 import DashboardSidebar from '../../components/DashboardSidebar/DashboardSidebar'
-import { beginnerModules } from '../../modules'
 import { useNavigate } from 'react-router-dom'
+// import { beginnerModules } from '../../modules'
+// import { stats } from '../../stats'
 
 export default function Dashboard() {
   //For testing remove stats, completedLessonsCounter, strugglingLessons and excellingLessons in useContext and uncomment the stats, beginnerModules, completedLessonsCounter, strugglingLessons and excellingLessons testing data
@@ -51,12 +51,17 @@ export default function Dashboard() {
     excellingLessons,
     stats,
     completedLessonsCounter,
+    loading,
   } = useContext(GlobalContext)
 
   const navigate = useNavigate()
 
-  console.log('These is the stats we are getting from the context: ', stats)
-  if (!stats) return <h1>Allahu Akbar</h1>
+  if (loading)
+    return (
+      <h1 className="mt-16 text-center text-3xl font-extrabold">
+        Loading User Stats
+      </h1>
+    )
 
   console.log('These is the stats array', stats)
   return (
@@ -70,13 +75,14 @@ export default function Dashboard() {
         <div className="w-full h-full flex flex-wrap gap-20 gap-y-16 ml-10 relative mb-20">
           <div className="w-[33rem] h-[31rem] bg-gray-200 rounded-3xl">
             <h3 className="text-center font-bold text-3xl mt-6">
-              Completed Lessons Summary
+              Completed Quizzes Summary
             </h3>
             <div className="relative left-20 -ml-4">
               {stats && stats.length > 0 ? (
                 <RadialBarAnalytics
                   completed={completedLessonsCounter}
-                  notComplete={stats?.length - completedLessonsCounter}
+                  notCompleted={stats?.length - completedLessonsCounter}
+                  stats={stats}
                 />
               ) : (
                 <RadialBarAnalytics completed={0} notComplete={10} />
@@ -98,9 +104,7 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="w-[33rem] h-[31rem] bg-gray-200 rounded-3xl -ml-4">
-            <h3 className="text-center font-bold text-3xl mt-6">
-              Time Spent & Quiz Scores
-            </h3>
+            <h3 className="text-center font-bold text-3xl mt-6">Quiz Scores</h3>
             {stats && stats?.length > 0
               ? stats.map((stat, index) => {
                   if (stat.isFinished && index < 4) {
@@ -152,20 +156,18 @@ export default function Dashboard() {
           </div>
           <div className="w-[33rem] h-[31rem] bg-gray-200 rounded-3xl -ml-4">
             <h3 className="text-center font-bold text-3xl mt-6">
-              You Excel at These Lessons
+              You Passed These Lessons
             </h3>
             {excellingLessons && excellingLessons?.length > 0
               ? excellingLessons.map((lesson, index) => {
-                  if (lesson.isFinished) {
-                    if (index < 4) {
-                      return (
-                        <StatsBar
-                          stat={lesson}
-                          color={'#43A047'}
-                          size={'small'}
-                        />
-                      )
-                    }
+                  if (index < 4) {
+                    return (
+                      <StatsBar
+                        stat={lesson}
+                        color={'#43A047'}
+                        size={'small'}
+                      />
+                    )
                   }
                 })
               : null}

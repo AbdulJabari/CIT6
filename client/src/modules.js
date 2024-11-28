@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from 'uuid'
-
 export const beginnerModules = [
   {
     id: '1',
@@ -10,6 +8,7 @@ export const beginnerModules = [
     duration: 60,
     questions: [
       {
+        questionNo: 1,
         question: 'What is a blockchain?',
         choices: [
           'A digital ledger of transactions stored in blocks',
@@ -17,9 +16,10 @@ export const beginnerModules = [
           'A database with no security',
           'A tool for tracking paper records',
         ],
-        answer: 'A digital ledger of transactions stored in blocks ',
+        answer: 'A digital ledger of transactions stored in blocks',
       },
       {
+        questionNo: 2,
         question: 'What makes blockchain data immutable?',
         choices: [
           'Cryptographic hashing and distribution across multiple nodes',
@@ -30,6 +30,7 @@ export const beginnerModules = [
         answer: 'Cryptographic hashing and distribution across multiple nodes',
       },
       {
+        questionNo: 3,
         question: 'In Bitcoin, what is a "nonce"?',
         choices: [
           'A randomly chosen validator',
@@ -40,12 +41,14 @@ export const beginnerModules = [
         answer: 'A changeable value used to find a valid hash',
       },
       {
+        questionNo: 4,
         question:
           'What is the average time it takes to confirm a Bitcoin transaction?',
         choices: ['10 seconds', '10 minutes', '1 hour', '24 hours'],
         answer: '1 hour',
       },
       {
+        questionNo: 5,
         question: 'What process does Ethereum use to validate transactions?',
         choices: [
           'Proof of Stake (PoS)',
@@ -56,6 +59,7 @@ export const beginnerModules = [
         answer: 'Proof of Stake (PoS)',
       },
       {
+        questionNo: 6,
         question: 'What is the purpose of a blockchain explorer?',
         choices: [
           'To hack the blockchain',
@@ -66,6 +70,7 @@ export const beginnerModules = [
         answer: 'To view transactions and blocks in real time',
       },
       {
+        questionNo: 7,
         question: 'Why can data stored on a blockchain be considered secure?',
         choices: [
           'Because it is stored on a single secure server',
@@ -76,12 +81,14 @@ export const beginnerModules = [
         answer: 'Because nodes compare block hashes to detect alterations',
       },
       {
+        questionNo: 8,
         question:
           'What type of file size is used for blocks in the Bitcoin blockchain?',
         choices: ['1MB', '4MB', '10MB', 'No fixed size'],
         answer: '4MB',
       },
       {
+        questionNo: 9,
         question: 'What ensures transparency in the Bitcoin blockchain?',
         choices: [
           'Private transactions',
@@ -92,6 +99,7 @@ export const beginnerModules = [
         answer: 'Encrypted records and blockchain explorers',
       },
       {
+        questionNo: 10,
         question:
           'What does "decentralized" mean in the context of blockchain?',
         choices: [
@@ -109,9 +117,11 @@ export const beginnerModules = [
     name: 'How are Blockchain used and its',
     keywords: ['Blockchain', 'How does blockchain work?', 'Bitcoin Mining'],
     desc: "The idea Blockchain may be filled with jargons, but it doesn't have to be complicated to learn...",
+    passingScore: 5,
     duration: 60,
     questions: [
       {
+        questionNo: 1,
         question: 'What is blockchain’s benefit in food?',
         choices: [
           'Extends food shelf life',
@@ -122,6 +132,7 @@ export const beginnerModules = [
         answer: 'Traces food routes for safety',
       },
       {
+        questionNo: 2,
         question: 'How does blockchain improve banking?',
         choices: [
           'Faster transaction processing',
@@ -132,6 +143,7 @@ export const beginnerModules = [
         answer: 'Faster transaction processing',
       },
       {
+        questionNo: 3,
         question: 'How can blockchain help healthcare?',
         choices: [
           'Secure medical record storage',
@@ -142,6 +154,7 @@ export const beginnerModules = [
         answer: 'Secure medical record storage',
       },
       {
+        questionNo: 4,
         question: 'What is a smart contract?',
         choices: [
           'Code automating transactions',
@@ -152,6 +165,7 @@ export const beginnerModules = [
         answer: 'Code automating transactions',
       },
       {
+        questionNo: 5,
         question: 'Why is blockchain useful for cross-border?',
         choices: [
           'Avoids currency restrictions',
@@ -162,6 +176,7 @@ export const beginnerModules = [
         answer: 'Avoids currency restrictions',
       },
       {
+        questionNo: 6,
         question: 'How does blockchain help property records?',
         choices: [
           'Stores deeds digitally and securely',
@@ -172,6 +187,7 @@ export const beginnerModules = [
         answer: 'Stores deeds digitally and securely',
       },
       {
+        questionNo: 7,
         question: 'What can blockchain provide in war zones?',
         choices: [
           'Maintain property ownership records',
@@ -182,6 +198,7 @@ export const beginnerModules = [
         answer: 'Maintain property ownership records',
       },
       {
+        questionNo: 8,
         question: 'How does blockchain help stock trading?',
         choices: [
           'Reduces settlement time',
@@ -192,6 +209,7 @@ export const beginnerModules = [
         answer: 'Reduces settlement time',
       },
       {
+        questionNo: 9,
         question: 'What is IBM’s Food Trust blockchain?',
         choices: [
           'Tracks food from source',
@@ -202,6 +220,7 @@ export const beginnerModules = [
         answer: 'Tracks food from source',
       },
       {
+        questionNo: 10,
         question: 'What ensures blockchain data security?',
         choices: [
           'Distributed encrypted network',
@@ -214,12 +233,14 @@ export const beginnerModules = [
     ],
   },
   {
-    id: 3,
+    id: '3',
     name: 'Different Types of Blockchain',
     keywords: ['Public Blockchain', 'Proof of Work?', 'Consortium Blockchain'],
     desc: 'There are four main types of blockchain networks: public blockchains, private blockchains,   ....',
+    passingScore: 5,
     questions: [
       {
+        questionNo: 1,
         question: 'What is blockchain’s benefit in food?',
         choices: [
           'Extends food shelf life',
@@ -230,6 +251,7 @@ export const beginnerModules = [
         answer: 'Traces food routes for safety',
       },
       {
+        questionNo: 2,
         question: 'How does blockchain improve banking?',
         choices: [
           'Faster transaction processing',
@@ -240,6 +262,7 @@ export const beginnerModules = [
         answer: 'Faster transaction processing',
       },
       {
+        questionNo: 3,
         question: 'How can blockchain help healthcare?',
         choices: [
           'Secure medical record storage',
@@ -250,6 +273,7 @@ export const beginnerModules = [
         answer: 'Secure medical record storage',
       },
       {
+        questionNo: 4,
         question: 'What is a smart contract?',
         choices: [
           'Code automating transactions',
@@ -260,6 +284,7 @@ export const beginnerModules = [
         answer: 'Code automating transactions',
       },
       {
+        questionNo: 5,
         question: 'Why is blockchain useful for cross-border?',
         choices: [
           'Avoids currency restrictions',
@@ -270,6 +295,7 @@ export const beginnerModules = [
         answer: 'Avoids currency restrictions',
       },
       {
+        questionNo: 6,
         question: 'How does blockchain help property records?',
         choices: [
           'Stores deeds digitally and securely',
@@ -280,6 +306,7 @@ export const beginnerModules = [
         answer: 'Stores deeds digitally and securely',
       },
       {
+        questionNo: 7,
         question: 'What can blockchain provide in war zones?',
         choices: [
           'Maintain property ownership records',
@@ -290,6 +317,7 @@ export const beginnerModules = [
         answer: 'Maintain property ownership records',
       },
       {
+        questionNo: 8,
         question: 'How does blockchain help stock trading?',
         choices: [
           'Reduces settlement time',
@@ -300,6 +328,7 @@ export const beginnerModules = [
         answer: 'Reduces settlement time',
       },
       {
+        questionNo: 9,
         question: 'What is IBM’s Food Trust blockchain?',
         choices: [
           'Tracks food from source',
@@ -310,6 +339,7 @@ export const beginnerModules = [
         answer: 'Tracks food from source',
       },
       {
+        questionNo: 10,
         question: 'What ensures blockchain data security?',
         choices: [
           'Distributed encrypted network',
