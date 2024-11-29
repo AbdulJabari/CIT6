@@ -38,16 +38,26 @@ export default function ConceptBooster() {
           </h2>
           {apiResponse && apiResponse.length > 0
             ? apiResponse.map((wrongAnswers) => (
-                <div className="ml-6 mt-8 w-[68vw] h-full bg-gray-200">
-                  <h3 className=" text-blue-600 text-xl">
+                <div className="ml-6 mt-8 w-[68vw] h-full bg-gray-200 pl-6 py-6 rounded-lg">
+                  <h3 className=" text-blue-600 text-3xl font-extrabold mb-4">
                     {wrongAnswers.title}
                   </h3>
                   {console.log(wrongAnswers.wrongAnswers)}
                   {wrongAnswers.wrongAnswers.map((wrongAnswer) => (
-                    <div>
-                      <h4>{wrongAnswer.question}</h4>
-                      <h4>{wrongAnswer.answer}</h4>
-                      <h4>{wrongAnswer.explanation}</h4>
+                    <div className="text-xl pb-6 bg-white rounded-lg w-[97%] mb-5">
+                      <h4 className="text-2xl font-bold pl-4">
+                        {wrongAnswer.question}
+                      </h4>
+                      <h4 className="pl-10 text-red-600">
+                        <span className="text-red-700 font-bold">Answer: </span>
+                        {wrongAnswer.answer}
+                      </h4>
+                      <h4 className="pl-10 text-green-600">
+                        <span className="text-green-700 font-bold">
+                          Explanation:{' '}
+                        </span>
+                        {wrongAnswer.explanation}
+                      </h4>
                     </div>
                   ))}
                 </div>

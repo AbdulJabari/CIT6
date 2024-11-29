@@ -3,11 +3,24 @@ import { useNavigate } from 'react-router-dom'
 import { FaArrowRight, FaLightbulb } from 'react-icons/fa'
 import './modules.css'
 import { GlobalContext } from '../../context/GlobalState'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 
 export default function Modules() {
   const navigate = useNavigate()
+  const { fetchListOfModules, loading } = useContext(GlobalContext)
   // const { beginnerModules } = useContext(GlobalContext)
+
+  useEffect(() => {
+    fetchListOfModules()
+  }, [])
+
+  if (loading)
+    return (
+      <h1 className="mt-16 text-center text-3xl font-extrabold">
+        Loading User Stats
+      </h1>
+    )
+
   return (
     <div className="font-sans mt-12 w-[95vw] h-[100vh]  flex-col p-3 pl-10">
       <h1 className="mt-4 text-green-600 font-bold text-3xl  mb-2 tracking-wider">

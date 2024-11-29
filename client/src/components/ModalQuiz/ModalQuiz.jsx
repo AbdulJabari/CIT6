@@ -7,11 +7,11 @@ import { beginnerModules } from '../../modules'
 import { GlobalContext } from '../../context/GlobalState'
 
 const ModalQuiz = ({ onClose, questions, moduleId }) => {
-  const [numCorrect, setNumCorrect] = useState(0)
+  const { handleUpdateQuizScore, handleUpdateAnswer, stats } =
+    useContext(GlobalContext)
+  const [numCorrect, setNumCorrect] = useState(stats[moduleId - 1].quizScore)
   const [questionIndex, setQuestionIndex] = useState(0)
   const navigate = useNavigate()
-  const { handleUpdateQuizScore, handleUpdateAnswer } =
-    useContext(GlobalContext)
 
   function handleOptionClick(e) {
     if (questionIndex < questions.length) {
@@ -61,7 +61,7 @@ const ModalQuiz = ({ onClose, questions, moduleId }) => {
   return (
     <div className="fixed z-100 p-[150px] left-0 top-0 w-full h-full modal overflow-hidden">
       <div className="relative bg-white m-auto p-8  border-red-800 rounded-lg border-2 w-[80%] modal-content">
-        {questionIndex < questions.length ? (
+        {!stats[moduleId - 1].isFinished && questionIndex < questions.length ? (
           <div>
             <div className="px-1 pt-4 bg-white flex justify-between items-center">
               <h2 className="font-bold text-2xl">
@@ -123,7 +123,8 @@ const ModalQuiz = ({ onClose, questions, moduleId }) => {
           </div>
         ) : (
           <div className="flex flex-col justify-center items-center gap-4">
-            {handleUpdateQuizScore(moduleId, numCorrect)}
+            {!stats[moduleId - 1].isFinished &&
+              handleUpdateQuizScore(moduleId, numCorrect)}
             <h2 className="text-3xl font-bold text-green-600 m-0 p-0">
               Congrats ! You Finished The Quiz{' '}
               <span

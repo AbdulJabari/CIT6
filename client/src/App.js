@@ -18,6 +18,7 @@ import { useContext } from 'react'
 import { GlobalContext } from './context/GlobalState'
 import Topic3 from './pages/Topics/Beginner/Topic3'
 import KeyAnswers from './components/KeyAnswers/KeyAnswers'
+import SeeResults from './components/SeeResults/SeeResults'
 
 function App() {
   const { loading } = useContext(GlobalContext)
@@ -34,6 +35,7 @@ function App() {
           element={<DemoVideo1 />}
         />
         <Route path="/keyanswers" element={<KeyAnswers />} />
+        <Route path="/seeresults" element={<SeeResults />} />
         <Route path="/modules" element={<Modules />} />
         <Route
           path={`/modules/${beginnerModules[0].id}`}

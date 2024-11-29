@@ -4,8 +4,11 @@ import { beginnerModules } from '../../../modules'
 import { GiBrain } from 'react-icons/gi'
 import { GlobalContext } from '../../../context/GlobalState'
 import { useNavigate } from 'react-router-dom'
+import { FaMagnifyingGlass } from 'react-icons/fa6'
 
 const Topic1 = () => {
+  const { stats } = useContext(GlobalContext)
+
   const [showModalPopup, setShowModalPopup] = useState(false)
   // const [time, setTime] = useState(0)
   // const [isTimeRunning, setIsTimeRunning] = useState(true)
@@ -33,6 +36,11 @@ const Topic1 = () => {
   // }, [isTimeRunning])
 
   // console.log('Time spent: ', time)
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    })
+  }, [])
   return (
     <div
       className={`w-[50vw] h-auto mx-auto mt-24 font-sans color ${
@@ -164,11 +172,23 @@ const Topic1 = () => {
           handleToggleModalPopup()
         }}
       >
-        <GiBrain
-          className="inline-block"
-          style={{ height: '30px', width: '25px', marginRight: '3px' }}
-        />
-        Take Quiz
+        {stats && stats.length > 0 && stats[0].isFinished ? (
+          <div>
+            <FaMagnifyingGlass
+              className="inline-block"
+              style={{ height: '20px', width: '25px', marginRight: '3px' }}
+            />
+            See Results
+          </div>
+        ) : (
+          <div>
+            <GiBrain
+              className="inline-block"
+              style={{ height: '30px', width: '25px', marginRight: '3px' }}
+            />
+            Take Quiz
+          </div>
+        )}
       </button>
       <button
         className="rounded-lg  p-3 px-8 bg-green-600 mt-7 text-white font-bold text-lg block mx-auto mb-2"

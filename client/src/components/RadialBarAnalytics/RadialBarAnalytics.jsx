@@ -33,7 +33,7 @@ class RadialBarAnalytics extends Component {
         },
       },
 
-      series: [Math.floor((completed / stats.length) * 100).toFixed(2)],
+      series: [Math.floor((completed / stats?.length) * 100).toFixed(2)],
     }
   }
 

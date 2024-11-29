@@ -1,7 +1,7 @@
 import RadialBarAnalytics from '../../components/RadialBarAnalytics/RadialBarAnalytics'
 import { FaAnglesRight } from 'react-icons/fa6'
 import StatsBar from '../../components/StatsBar/StatsBar'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { GlobalContext } from '../../context/GlobalState'
 import DashboardSidebar from '../../components/DashboardSidebar/DashboardSidebar'
 import { useNavigate } from 'react-router-dom'
@@ -52,9 +52,14 @@ export default function Dashboard() {
     stats,
     completedLessonsCounter,
     loading,
+    fetchListOfModules,
   } = useContext(GlobalContext)
 
   const navigate = useNavigate()
+
+  useEffect(() => {
+    fetchListOfModules()
+  }, [])
 
   if (loading)
     return (
@@ -78,7 +83,7 @@ export default function Dashboard() {
               Completed Quizzes Summary
             </h3>
             <div className="relative left-20 -ml-4">
-              {stats && stats.length > 0 ? (
+              {stats && stats?.length > 0 ? (
                 <RadialBarAnalytics
                   completed={completedLessonsCounter}
                   notCompleted={stats?.length - completedLessonsCounter}

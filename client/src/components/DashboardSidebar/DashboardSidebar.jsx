@@ -35,7 +35,7 @@ const DashboardSidebar = () => {
         onClick={() => navigate('/dashboard/conceptbooster')}
       >
         <FaBookOpen />
-        Concept Booster
+        Mistakes Explanation
       </h3>
     </div>
   )

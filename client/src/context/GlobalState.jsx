@@ -53,7 +53,7 @@ export default function GlobalState({ children }) {
     const excellingLessons = []
     beginnerModules.map((module, index) => {
       if (
-        stats[index].quizScore > module.passingScore &&
+        stats[index].quizScore >= module.passingScore &&
         stats[index].isFinished
       ) {
         return excellingLessons.push(stats[index])
@@ -259,6 +259,7 @@ export default function GlobalState({ children }) {
         // handleDeleteATopic,
         handleUpdateAnswer,
         fetchListOfApiResponse,
+        fetchListOfModules,
       }}
     >
       {children}

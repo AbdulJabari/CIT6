@@ -1,10 +1,13 @@
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import ModalQuiz from '../../../components/ModalQuiz/ModalQuiz'
 import { beginnerModules } from '../../../modules'
 import { useNavigate } from 'react-router-dom'
 import { GiBrain } from 'react-icons/gi'
+import { GlobalContext } from '../../../context/GlobalState'
+import { FaMagnifyingGlass } from 'react-icons/fa6'
 
 const Topic2 = () => {
+  const { stats } = useContext(GlobalContext)
   const [showModalPopup, setShowModalPopup] = useState(false)
   // const [time, setTime] = useState(0)
   // const [isTimeRunning, setIsTimeRunning] = useState(true)
@@ -146,11 +149,23 @@ const Topic2 = () => {
           handleToggleModalPopup()
         }}
       >
-        <GiBrain
-          className="inline-block"
-          style={{ height: '30px', width: '25px', marginRight: '3px' }}
-        />
-        Take Quiz
+        {stats && stats.length > 0 && stats[1].isFinished ? (
+          <div>
+            <FaMagnifyingGlass
+              className="inline-block"
+              style={{ height: '20px', width: '25px', marginRight: '3px' }}
+            />
+            See Results
+          </div>
+        ) : (
+          <div>
+            <GiBrain
+              className="inline-block"
+              style={{ height: '30px', width: '25px', marginRight: '3px' }}
+            />
+            Take Quiz
+          </div>
+        )}
       </button>
       <div className="w-full flex  justify-between items-center mb-5">
         <button
